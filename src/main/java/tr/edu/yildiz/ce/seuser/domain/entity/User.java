@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
 import tr.edu.yildiz.ce.seuser.validation.Validatable;
 
 @Entity
@@ -61,6 +62,15 @@ public class User implements Serializable, Validatable {
     @Override
     public boolean validate() {
         return true;
+    }
+
+    public static User of(UserRegistrationDto userDto) {
+        var user = new User();
+        
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+
+        return user;
     }
 
 }
