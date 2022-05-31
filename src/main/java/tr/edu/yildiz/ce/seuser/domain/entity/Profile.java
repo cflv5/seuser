@@ -4,12 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
+import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
 import tr.edu.yildiz.ce.seuser.validation.Validatable;
 
 @Entity
@@ -26,9 +25,6 @@ public class Profile implements Serializable, Validatable {
     private String surname;
     @Column
     private String title;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private User user;
 
     public Profile() {
         super();
@@ -69,6 +65,15 @@ public class Profile implements Serializable, Validatable {
     @Override
     public boolean validate() {
         return false;
+    }
+
+    public static Profile of(UserRegistrationDto userDto) {
+        var profile = new Profile();
+        profile.setName(userDto.getName());
+        profile.setSurname(userDto.getSurname());
+        profile.setMiddlename(userDto.getMiddlename());
+        profile.setTitle(userDto.getTitle());
+        return profile;
     }
 
 }
