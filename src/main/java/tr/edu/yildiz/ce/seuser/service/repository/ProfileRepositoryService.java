@@ -1,0 +1,22 @@
+package tr.edu.yildiz.ce.seuser.service.repository;
+
+import org.springframework.stereotype.Service;
+
+import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
+import tr.edu.yildiz.ce.seuser.domain.entity.Profile;
+import tr.edu.yildiz.ce.seuser.repository.ProfileRepository;
+
+@Service
+public class ProfileRepositoryService {
+    private final ProfileRepository profileRepository;
+
+    public ProfileRepositoryService(ProfileRepository profileRepository) {
+        this.profileRepository = profileRepository;
+    }
+
+    public Profile createAndSaveProfile(UserRegistrationDto user) {
+        var profile = Profile.of(user);
+        profileRepository.save(profile);
+        return profile;
+    }
+}
