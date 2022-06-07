@@ -55,6 +55,8 @@ public class LoginControllerService {
         var user = User.of(request.getUser());
         user.setProfile(profile);
         user = userRepositoryService.saveUser(user);
+        profile.setTenant(user);
+        profileRepositoryService.saveProfile(profile);
 
         return new RegisterControllerResponse(ResponseHeader.success(), user.getId());
     }
