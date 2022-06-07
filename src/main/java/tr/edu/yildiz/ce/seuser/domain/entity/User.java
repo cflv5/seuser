@@ -13,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
 import tr.edu.yildiz.ce.seuser.validation.Validatable;
 
-@Entity
+@Entity(name = "TENANT")
 public class User implements Serializable, Validatable {
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -23,7 +23,6 @@ public class User implements Serializable, Validatable {
     private String email;
     @Column
     private String password;
-    @Column
     @OneToOne
     private Profile profile;
 
