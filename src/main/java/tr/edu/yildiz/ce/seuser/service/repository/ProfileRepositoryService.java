@@ -1,7 +1,10 @@
 package tr.edu.yildiz.ce.seuser.service.repository;
 
+import java.util.Objects;
+
 import org.springframework.stereotype.Service;
 
+import tr.edu.yildiz.ce.se.base.exception.SeBaseException;
 import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
 import tr.edu.yildiz.ce.seuser.domain.entity.Profile;
 import tr.edu.yildiz.ce.seuser.repository.ProfileRepository;
@@ -18,5 +21,14 @@ public class ProfileRepositoryService {
         var profile = Profile.of(user);
         profileRepository.save(profile);
         return profile;
+    }
+
+    public Profile fetchProfile(String tenantId) {
+        return profileRepository.getProfileByTenantId(tenantId).orElseThrow(() -> new SeBaseException(tenantId));
+    }
+
+    public Profile saveProfile(Profile profile) {
+        Objects.requireNonNull(profile, "Profile to be saved cannot be null.");
+        return profileRepository.save(profile);
     }
 }
