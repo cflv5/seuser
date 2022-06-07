@@ -18,7 +18,7 @@ import tr.edu.yildiz.ce.seuser.domain.dto.RegisterControllerResponse;
 import tr.edu.yildiz.ce.seuser.service.LoginControllerService;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/v1/api/user")
 public class LoginController {
     private final LoginControllerService loginControllerService;
 
