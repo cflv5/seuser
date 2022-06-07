@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
 import tr.edu.yildiz.ce.seuser.validation.Validatable;
@@ -25,9 +26,19 @@ public class Profile implements Serializable, Validatable {
     private String surname;
     @Column
     private String title;
+    @OneToOne
+    private User tenant;
 
     public Profile() {
         super();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -60,6 +71,14 @@ public class Profile implements Serializable, Validatable {
 
     public void setTitle(final String title) {
         this.title = title;
+    }
+
+    public User getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(User tenant) {
+        this.tenant = tenant;
     }
 
     @Override
