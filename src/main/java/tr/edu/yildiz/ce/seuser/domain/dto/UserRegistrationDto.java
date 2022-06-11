@@ -1,11 +1,18 @@
 package tr.edu.yildiz.ce.seuser.domain.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class UserRegistrationDto {
+    @NotBlank
     private String email;
+    @NotBlank
     private String password;
+    @NotBlank
     private String name;
     private String middlename;
+    @NotBlank
     private String surname;
+    @NotBlank
     private String title;
 
     public UserRegistrationDto() {
