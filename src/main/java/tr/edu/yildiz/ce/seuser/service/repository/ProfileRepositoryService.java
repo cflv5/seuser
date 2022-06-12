@@ -2,6 +2,7 @@ package tr.edu.yildiz.ce.seuser.service.repository;
 
 import java.util.Objects;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import tr.edu.yildiz.ce.se.base.exception.SeBaseException;
@@ -24,7 +25,8 @@ public class ProfileRepositoryService {
     }
 
     public Profile fetchProfile(String tenantId) {
-        return profileRepository.getProfileByTenantId(tenantId).orElseThrow(() -> new SeBaseException(tenantId));
+        return profileRepository.getProfileByTenantId(tenantId)
+                .orElseThrow(() -> new SeBaseException("Tenant could not be found", HttpStatus.OK));
     }
 
     public Profile saveProfile(Profile profile) {

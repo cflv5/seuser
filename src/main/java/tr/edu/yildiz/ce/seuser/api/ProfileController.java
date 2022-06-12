@@ -9,7 +9,7 @@ import tr.edu.yildiz.ce.seuser.domain.dto.ProfileControllerResponse;
 import tr.edu.yildiz.ce.seuser.service.ProfileControllerService;
 
 @RestController
-@RequestMapping("/v1/api/user")
+@RequestMapping("/v1/api/users/profile")
 public class ProfileController {
 
     private final ProfileControllerService profileControllerService;
