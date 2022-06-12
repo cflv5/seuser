@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import tr.edu.yildiz.ce.se.base.domain.common.TenantUser;
 import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
 import tr.edu.yildiz.ce.seuser.validation.Validatable;
 
@@ -65,11 +66,22 @@ public class User implements Serializable, Validatable {
 
     public static User of(UserRegistrationDto userDto) {
         var user = new User();
-        
+
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
 
         return user;
+    }
+
+    public TenantUser toTenantUser() {
+        var tenant = new TenantUser();
+        tenant.setEmail(email);
+        tenant.setTenantId(id);
+        tenant.setName(profile.getName());
+        tenant.setSurname(profile.getSurname());
+        tenant.setMiddleName(profile.getMiddlename());
+        tenant.setTitle(profile.getTitle());
+        return tenant;
     }
 
 }
