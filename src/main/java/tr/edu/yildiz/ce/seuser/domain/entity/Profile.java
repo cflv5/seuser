@@ -2,11 +2,14 @@ package tr.edu.yildiz.ce.seuser.domain.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
 import tr.edu.yildiz.ce.seuser.domain.dto.UserRegistrationDto;
@@ -28,6 +31,9 @@ public class Profile implements Serializable, Validatable {
     private String title;
     @OneToOne
     private User tenant;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] picture;
 
     public Profile() {
         super();
@@ -79,6 +85,14 @@ public class Profile implements Serializable, Validatable {
 
     public void setTenant(User tenant) {
         this.tenant = tenant;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     @Override
