@@ -10,7 +10,7 @@ import tr.edu.yildiz.ce.seuser.domain.response.FetchTenantControllerResponse;
 import tr.edu.yildiz.ce.seuser.service.TenantControllerService;
 
 @RestController
-@RequestMapping("/v1/api/internal/users")
+@RequestMapping("/v1/api/users")
 public class TenantController {
     private final TenantControllerService tenantControllerService;
 
