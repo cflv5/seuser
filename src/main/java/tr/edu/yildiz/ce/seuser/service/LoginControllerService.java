@@ -1,5 +1,7 @@
 package tr.edu.yildiz.ce.seuser.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import tr.edu.yildiz.ce.se.base.domain.HeaderMessage;
@@ -24,6 +26,7 @@ public class LoginControllerService {
         this.profileRepositoryService = profileRepositoryService;
     }
 
+    @Transactional
     public LoginControllerResponse authenticate(LoginControllerRequest request) {
         var username = request.getEmail();
         var password = request.getPassword();

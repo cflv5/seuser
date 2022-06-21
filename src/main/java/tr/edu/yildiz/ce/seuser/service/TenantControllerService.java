@@ -1,5 +1,7 @@
 package tr.edu.yildiz.ce.seuser.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,13 @@ public class TenantControllerService {
         this.userRepositoryService = userRepositoryService;
     }
 
+    @Transactional
     public FetchTenantControllerResponse fetchTenant(String id) {
         var user = userRepositoryService.findUser(id);
         return new FetchTenantControllerResponse(ResponseHeader.success(), user.toTenantUser());
     }
 
+    @Transactional
     public FetchTenantControllerResponse fetchTenantByEmail(String email) {
         var user = userRepositoryService.getUserByUsername(email)
                 .orElseThrow(() -> new SeBaseException("User not found", HttpStatus.OK));
