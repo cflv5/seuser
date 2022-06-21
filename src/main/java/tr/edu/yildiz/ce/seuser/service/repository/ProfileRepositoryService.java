@@ -27,7 +27,7 @@ public class ProfileRepositoryService {
 
     public Profile fetchProfile(String tenantId) {
         return profileRepository.getProfileByTenantId(tenantId)
-                .orElseThrow(() -> new SeBaseException("Tenant could not be found", HttpStatus.OK));
+                .orElseThrow(() -> new SeBaseException("Tenant could not be found", HttpStatus.NOT_FOUND));
     }
 
     public Profile saveProfile(Profile profile) {

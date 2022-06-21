@@ -2,8 +2,10 @@ package tr.edu.yildiz.ce.seuser.api;
 
 import java.io.IOException;
 
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,5 +35,10 @@ public class ProfileController {
     public ResponseEntity<OnlyHeaderControllerResponse> addProfilePicture(
             @RequestParam("picture") MultipartFile picture) throws IOException {
         return ResponseEntity.ok().body(profileControllerService.addProfilePicture(picture));
+    }
+
+    @GetMapping(value = "/picture/{id}")
+    public ResponseEntity<Resource> fetchProfilePicture(@PathVariable("id") String id) {
+        return ResponseEntity.ok().body(profileControllerService.fetchTenantsProfilePicture(id));
     }
 }
