@@ -1,6 +1,7 @@
 package tr.edu.yildiz.ce.seuser.service;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.transaction.Transactional;
 
@@ -54,10 +55,19 @@ public class ProfileControllerService {
     @Transactional
     public Resource fetchTenantsProfilePicture(String id) {
         var profile = profileRepositoryService.fetchProfile(id);
-        if (profile.getPicture().length == 0) {
+        var picture = profile.getPicture();
+        if (Objects.isNull(picture) || picture.length == 0) {
             return null;
         }
         return new ByteArrayResource(Base64Utils.encode(profile.getPicture()));
+    }
+
+    @Transactional
+    public OnlyHeaderControllerResponse clearProfilePicture() {
+        var profile = profileRepositoryService.fetchOwnProfile();
+        profile.setPicture(null);
+        profileRepositoryService.saveProfile(profile);
+        return OnlyHeaderControllerResponse.success();
     }
 
 }
