@@ -44,6 +44,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>se-user</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
