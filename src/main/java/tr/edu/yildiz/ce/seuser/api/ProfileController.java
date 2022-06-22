@@ -37,6 +37,11 @@ public class ProfileController {
         return ResponseEntity.ok().body(profileControllerService.addProfilePicture(picture));
     }
 
+    @PostMapping(value = "/picture/clear")
+    public ResponseEntity<OnlyHeaderControllerResponse> clearProfilePicture() {
+        return ResponseEntity.ok().body(profileControllerService.clearProfilePicture());
+    }
+
     @GetMapping(value = "/picture/{id}")
     public ResponseEntity<Resource> fetchProfilePicture(@PathVariable("id") String id) {
         return ResponseEntity.ok().body(profileControllerService.fetchTenantsProfilePicture(id));
