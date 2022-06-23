@@ -1,25 +1,15 @@
 package tr.edu.yildiz.ce.seuser.domain.dto;
 
 import javax.validation.Valid;
-
-import tr.edu.yildiz.ce.se.base.domain.RequestHeader;
+import javax.validation.constraints.NotNull;
 
 public class RegisterControllerRequest {
-    private RequestHeader header;
-
     @Valid
+    @NotNull
     private UserRegistrationDto user;
 
     public RegisterControllerRequest() {
         super();
-    }
-
-    public RequestHeader getHeader() {
-        return header;
-    }
-
-    public void setHeader(RequestHeader header) {
-        this.header = header;
     }
 
     public UserRegistrationDto getUser() {
