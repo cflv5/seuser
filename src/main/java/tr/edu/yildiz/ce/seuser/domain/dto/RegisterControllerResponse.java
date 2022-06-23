@@ -3,20 +3,20 @@ package tr.edu.yildiz.ce.seuser.domain.dto;
 import tr.edu.yildiz.ce.se.base.domain.ResponseHeader;
 
 public class RegisterControllerResponse {
-    private ResponseHeader header;
+    private ResponseHeader responseHeader;
     private String tenantId;
 
-    public RegisterControllerResponse(ResponseHeader header, String tenantId) {
-        this.header = header;
+    public RegisterControllerResponse(ResponseHeader responseHeader, String tenantId) {
+        this.responseHeader = responseHeader;
         this.tenantId = tenantId;
     }
 
-    public ResponseHeader getHeader() {
-        return header;
+    public ResponseHeader getResponseHeader() {
+        return responseHeader;
     }
 
-    public void setHeader(ResponseHeader header) {
-        this.header = header;
+    public void setResponseHeader(ResponseHeader responseHeader) {
+        this.responseHeader = responseHeader;
     }
 
     public String getTenantId() {
