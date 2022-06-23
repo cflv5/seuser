@@ -12,7 +12,6 @@ public class UserRegistrationDto {
     private String middlename;
     @NotBlank
     private String surname;
-    @NotBlank
     private String title;
 
     public UserRegistrationDto() {
